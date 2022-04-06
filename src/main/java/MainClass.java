@@ -48,6 +48,7 @@ public class MainClass {
         // TEST CODE START
         String sEnteros = "";
         int numIteracion = 0;
+        int checkWhileIn = 0;
         // TEST CODE END
 
         for (out = 1; out < n; out++) {
@@ -59,6 +60,7 @@ public class MainClass {
 
                 // TEST CODE START
                 numIteracion++;
+                checkWhileIn = 1;
                 sEnteros = "";
                 for(int i = 0; i <= n-1;i++){
                     sEnteros += Integer.toString(arrEnteros[i]) + " ";
@@ -67,6 +69,20 @@ public class MainClass {
                 // TEST CODE END
             }
             arrEnteros[in + 1] = key;
+            // TEST CODE START
+            if(checkWhileIn == 0){
+                numIteracion++;
+                checkWhileIn = 1;
+                sEnteros = "";
+                for(int i = 0; i <= n-1;i++){
+                    sEnteros += Integer.toString(arrEnteros[i]) + " ";
+                }
+                System.out.println("Iteración #" + numIteracion + ": [" + sEnteros + "]");
+            }
+            else{
+                checkWhileIn = 0;
+            }
+            // TEST CODE END
         }
     }
 
