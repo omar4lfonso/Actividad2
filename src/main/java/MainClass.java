@@ -93,41 +93,48 @@ public class MainClass {
     static void selectSort(int arrEnteros[]) {
         int endIndex = arrEnteros.length - 1;
 
-        for (int current = 0; current < endIndex; current++) {
-            swap(current, minIndex(current, endIndex, arrEnteros));
-        }
-    }
-
-    static void swap(int val1, int val2){
-        //swap elements
-        int temp = val1;
-        val1 = val2;
-        val2 = temp;
-    }
-
-    static int minIndex(int start, int end, int values[]) {
-        int indexOfMin = start;
-
         // TEST CODE START
         String sEnteros = "";
         int numIteracion = 0;
         // TEST CODE END
 
+        for (int current = 0; current < endIndex; current++) {
+            swap(current, minIndex(current, endIndex, arrEnteros), arrEnteros);
+
+            // TEST CODE START
+            numIteracion++;
+            sEnteros = "";
+            for(int i = 0; i <= endIndex;i++){
+                sEnteros += Integer.toString(arrEnteros[i]) + " ";
+            }
+            System.out.println("Swap #" + numIteracion + ": [" + sEnteros + "]");
+            // TEST CODE END
+        }
+    }
+
+    static void swap(int val1, int val2, int arr[]){
+        //swap elements
+        int temp = arr[val1];
+        arr[val1] = arr[val2];
+        arr[val2] = temp;
+    }
+
+    static int minIndex(int start, int end, int values[]) {
+        int indexOfMin = start;
+
         for (int index = start + 1; index <= end; index++){
+
+            // TEST CODE START
+            String value = (values[index] < values[indexOfMin])?"TRUE":"FALSE";
+            System.out.print("Comparación busca de índice " + Integer.toString(values[index]) + "<" + Integer.toString(values[indexOfMin])+ " = " + value);
+            // TEST CODE END
+
             if (values[index] < values[indexOfMin]){
                 indexOfMin = index;
             }
 
             // TEST CODE START
-            int n = values.length;
-            numIteracion++;
-            sEnteros = "";
-            for(int i = 0; i <= n-1;i++){
-                sEnteros += Integer.toString(values[i]) + " ";
-            }
-            System.out.println("Iteración #" + numIteracion + ": [" + sEnteros + "]");
-            // TEST CODE END
-
+            System.out.println(": index to compare (index)= " + Integer.toString(index) +" - indexOfMin ="+ Integer.toString(indexOfMin));
         }
         return indexOfMin;
     }
